@@ -20,6 +20,21 @@
     static double [] insertionSort (double a[]){
 
         //todo: implement the sort
+    	if(a.length == 0 || a.length == 1) {
+    		return a;
+    	}
+    	
+    	double temp;
+    	for(int i= 1; i< a.length; i++) {
+    		for(int j = i; j > 0; j--){
+    				if(a[j] < a[j-1]){
+    						temp = a[j];
+    						a[j] = a[j-1];
+    						a[j-1] = temp;
+    				}
+    		}
+    	}
+    	return a;
     }//end insertionsort
 	
 	    /**
@@ -30,8 +45,28 @@
      *
      */
     static double [] selectionSort (double a[]){
+    	
+    	 //todo: implement the sort
+		if(a.length == 0 || a.length == 1) {
+			return a;
+		}
+		
+		for(int i= 0; i< a.length-1; i++)
+		{
+		
+			int min_idx= i;
+			for(int j = i+1; j < a.length; j++)
+				if(a[j] < a[min_idx]) {
+					min_idx= j;
+				}
+			
+			double temp = a[min_idx];
+			a[min_idx] = a[i];
+			a[i] = temp;
+		}
 
-         //todo: implement the sort
+		return a;
+        
 
     }//end selectionsort
 
@@ -43,8 +78,19 @@
      *
      */
     static double [] quickSort (double a[]){
-	
 		 //todo: implement the sort
+    	if(a.length == 0 || a.length == 1) {
+			return a;
+		}
+    	
+  
+    	
+    	
+    	
+    	
+    	
+    	
+    	return a;
 
     }//end quicksort
 
@@ -64,6 +110,7 @@
      */
 
     static double[] mergeSortIterative (double a[]) {
+		return a;
 
 		 //todo: implement the sort
 	
@@ -79,6 +126,7 @@
      * @return after the method returns, the array must be in ascending sorted order.
      */
     static double[] mergeSortRecursive (double a[]) {
+		return a;
     	
 
     	//todo: implement the sort
