@@ -26,6 +26,18 @@ public class SortComparisonTest
 
     //~ Public Methods ........................................................
 
+	@Test
+    public void testSorts() {
+    	double[] testArray= new double[] {2,3,4,8,6,42,5,7,9,12};
+    	double[] sortedTestArray  = new double[testArray.length];
+    	double[] trueArray = new double[] {2,3,4,5,6,7,8,9,12,42};
+    	
+    	sortedTestArray = SortComparison.insertionSort(testArray);
+    	for( int i = 0; i < trueArray.length; i ++) {
+    		assertEquals(trueArray[i], sortedTestArray[i], 1e-6);
+    	}
+    }
+    
     // ----------------------------------------------------------
     /**
      * Check that the methods work for empty arrays
@@ -33,6 +45,36 @@ public class SortComparisonTest
     @Test
     public void testEmpty()
     {
+    	double[] emptyArray = new double[] {};
+    	double[] singleElementArray = new double[] {1.0};
+    	double[] sortedTestArray = new double[emptyArray.length];
+    	sortedTestArray = SortComparison.insertionSort(emptyArray);
+    	assertEquals(emptyArray, sortedTestArray);
+    	sortedTestArray = SortComparison.insertionSort(singleElementArray);
+    	assertEquals(singleElementArray,sortedTestArray);
+    	
+    	sortedTestArray = SortComparison.selectionSort(emptyArray);
+    	assertEquals(emptyArray, sortedTestArray);
+    	sortedTestArray = SortComparison.selectionSort(singleElementArray);
+    	assertEquals(singleElementArray,sortedTestArray);
+    	
+    	sortedTestArray = SortComparison.quickSort(emptyArray);
+    	assertEquals(emptyArray, sortedTestArray);
+    	sortedTestArray = SortComparison.quickSort(singleElementArray);
+    	assertEquals(singleElementArray,sortedTestArray);
+    	
+    	sortedTestArray = SortComparison.mergeSortRecursive(emptyArray);
+    	assertEquals(emptyArray, sortedTestArray);
+    	sortedTestArray = SortComparison.mergeSortRecursive(singleElementArray);
+    	assertEquals(singleElementArray,sortedTestArray);
+    	
+    	sortedTestArray = SortComparison.mergeSortIterative(emptyArray);
+    	assertEquals(emptyArray, sortedTestArray);
+    	sortedTestArray = SortComparison.mergeSortIterative(singleElementArray);
+    	assertEquals(singleElementArray,sortedTestArray);
+    	
+    	
+    	
     }
 
 
@@ -68,7 +110,7 @@ public class SortComparisonTest
     	/*for (int i =0 ; i < SelectionSort_test1.length; i++) {
     		System.out.println(SelectionSort_test1[i]);
 		}*/
-    	
+    
     	//System.out.println("Random number:" + (int)(Math.random() * 100));
     	double[] QuickSort_test1 = SortComparison.quickSort(ReadFile.readFile100Num(fileName2));
     	/*for (int i =0 ; i < QuickSort_test1.length; i++) {
@@ -76,9 +118,14 @@ public class SortComparisonTest
 		}*/
     	
     	double[] mergeSortRecursive_test1 = SortComparison.mergeSortRecursive(ReadFile.readFile10Num(fileName1));
-    	for (int i =0 ; i < mergeSortRecursive_test1.length; i++) {
+    	/*for (int i =0 ; i < mergeSortRecursive_test1.length; i++) {
     		System.out.println(mergeSortRecursive_test1[i]);
-		}
+		}*/
+    	
+    	double[] mergeSortIterative_test1 = SortComparison.mergeSortIterative(ReadFile.readFile1000Num(fileName3));
+    	/*for (int i =0 ; i < mergeSortIterative_test1.length; i++) {
+    		System.out.println(mergeSortIterative_test1[i]);
+		}*/
     }
 
 }

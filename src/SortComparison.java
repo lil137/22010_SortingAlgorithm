@@ -154,14 +154,60 @@
      */
 
     static double[] mergeSortIterative (double a[]) {
+    	
+    	if(a.length == 0 || a.length == 1) {
+    		return a;
+    	}
+    	
+    	int len = 1;
+        while(len < a.length){
+            for(int i = 0; i < a.length; i += 2*len){
+                mergeIterative(a, i, len);
+            }
+            len *= 2;
+        }
+     	
+		/*for (int j =0 ; j < a.length; j++) {
+    		System.out.println(a[j]);
+		}*/
+
 		return a;
 
 		 //todo: implement the sort
 	
     }//end mergesortIterative
     
-    
-    
+    public static void mergeIterative( double[] a, int i , int len) {
+    	 int start = i;
+         int len_i = i + len;
+         
+         int j = i + len;
+         int len_j = j +len;
+         
+         double[] temp = new double[2*len];
+         
+         int count = 0;
+         while(i < len_i && j < len_j && j < a.length){
+             if(a[i] <= a[j]){
+                 temp[count++] = a[i++];
+             }
+             else{
+                 temp[count++] = a[j++];
+             }
+         }
+         while(i < len_i && i < a.length){
+             temp[count++] = a[i++];
+         }
+         while(j < len_j && j < a.length){
+             temp[count++] = a[j++];
+         }
+         
+         count = 0;
+         while(start < j && start < a.length){
+             a[start++] = temp[count++];
+         }
+     }
+
     /**
      * Sorts an array of doubles using recursive implementation of Merge Sort.
      * This method is static, thus it can be called as SortComparison.sort(a)
@@ -170,6 +216,10 @@
      * @return after the method returns, the array must be in ascending sorted order.
      */
     static double[] mergeSortRecursive (double a[]) {
+    	
+    	if(a.length == 0 || a.length == 1) {
+    		return a;
+    	}
     	//todo: implement the sort
     	mergeSortRecursiveHelper(a,0,a.length-1);
     	
@@ -183,36 +233,35 @@
         int mid = low + (high-low)/2;      
         mergeSortRecursiveHelper(a, low, mid);  
         mergeSortRecursiveHelper(a, mid+1, high); 
-        //System.out.println("low: " + low + " high: " + high + " mid: " + mid );
-        merge(a, low, high);  
+        mergeRecursive(a, low, high);  
     }
     
-    public static void merge( double[] a , int l,  int h) {
-    	int mid= l + (h-l)/1 ;
-        int i=l;
-        int j=mid+1;
-        int count=0;
-        double temp[]=new double[h-l+1];
-        while(i<=mid&&j<=h){
-            if(a[i]<a[j]){
-                temp[count++]=a[i++];
+    public static void mergeRecursive( double[] a , int l,  int h) {
+    	int mid= l + (h-l)/2 ;
+        int i = l; // first index of  the left array
+        int j = mid + 1; // first index of the right array
+        int count = 0;
+        double temp[] = new double[h-l+1];
+        while(i <= mid && j <= h){
+            if(a[i] < a[j]){
+                temp[count++] = a[i++];
             }else{
-                temp[count++]=a[j++];
+                temp[count++] = a[j++];
             }        
         }
+        
+        // copy the rest part into the original array
         while(i<=mid){
-            temp[count++]=a[i++];
+            temp[count++] = a[i++];
         }
         while(j<=h){
-            temp[count++]=a[j++];
+            temp[count++] = a[j++];
         }
-        
-        
-        count=0;
-        while(l<=h){
-            a[l++]=temp[count++];
+            
+        count = 0;
+        while(l <= h){
+            a[l++] = temp[count++];
         }
-
     	
     }
     	
