@@ -45,29 +45,27 @@
      *
      */
     static double [] selectionSort (double a[]){
-    	
-    	 //todo: implement the sort
+    	//todo: implement the sort
 		if(a.length == 0 || a.length == 1) {
 			return a;
 		}
 		
 		for(int i= 0; i< a.length-1; i++)
 		{
-		
 			int min_idx= i;
-			for(int j = i+1; j < a.length; j++)
+			int j = i + 1;
+			while( j < a.length) {
 				if(a[j] < a[min_idx]) {
 					min_idx= j;
 				}
+				j++;
+			}
 			
 			double temp = a[min_idx];
 			a[min_idx] = a[i];
 			a[i] = temp;
 		}
-
 		return a;
-        
-
     }//end selectionsort
 
     /**
@@ -83,7 +81,7 @@
 			return a;
 		}
     	
-    	if(a.length <= 15) {
+    	if(a.length <= 10) {
     		return insertionSort(a);
     	}
     	
@@ -114,10 +112,7 @@
     			}
     		}
     		
-    		while(a[j] > pivot) {
-    			if(j == low) {
-    				break;
-    			}
+    		while(j != low && a[j] > pivot) {
     			j--;
     		}
     		
@@ -269,6 +264,7 @@
     public static void main(String[] args) {
 
         //todo: do experiments as per assignment instructions
+    	//return;
     }
 
  }//end class
