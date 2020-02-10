@@ -14,6 +14,17 @@ import org.junit.runners.JUnit4;
  *  @author Yuxiao Hu (19321099)
  *  @version HT 2020
  */
+
+/*
+a. Which of the sorting algorithms does the order of input have an impact on? Why?
+b. Which algorithm has the biggest difference between the best and worst performance, based
+on the type of input, for the input of size 1000? Why?
+c. Which algorithm has the best/worst scalability, i.e., the difference in performance time
+based on the input size? Please consider only input files with random order for this answer.
+d. Did you observe any difference between iterative and recursive implementations of merge
+sort?
+e. Which algorithm is the fastest for each of the 7 input files?
+*/
 @RunWith(JUnit4.class)
 public class SortComparisonTest
 {
@@ -182,10 +193,7 @@ public class SortComparisonTest
     	System.out.println("Runtime for insertionSort numbersSorted1000 " + (endTime - startTime) + "ms");
     	
     	System.out.println("");
-    	//double[] SelectionSort_test1 = SortComparison.selectionSort(ReadFile.readFile10Num(fileName1));
-    	/*for (int i =0 ; i < SelectionSort_test1.length; i++) {
-    		System.out.println(SelectionSort_test1[i]);
-		}*/
+    
     	
     	temp10 = ReadFile.readFile10Num(fileName1); 
     	startTime = System.currentTimeMillis();
@@ -231,21 +239,142 @@ public class SortComparisonTest
     	System.out.println("Runtime for selectionSort numbersSorted1000 " + (endTime - startTime) + "ms");
     	
         System.out.println("");
-    	//System.out.println("Random number:" + (int)(Math.random() * 100));
-    	double[] QuickSort_test1 = SortComparison.quickSort(ReadFile.readFile100Num(fileName2));
-    	/*for (int i =0 ; i < QuickSort_test1.length; i++) {
-    		System.out.println(QuickSort_test1[i]);
-		}*/
+
+		temp10 = ReadFile.readFile10Num(fileName1); 
+    	startTime = System.currentTimeMillis();
+    	SortComparison.quickSort(temp10);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for quickSort numbers10 " + (endTime - startTime) + "ms");
     	
-    	double[] mergeSortRecursive_test1 = SortComparison.mergeSortRecursive(ReadFile.readFile10Num(fileName1));
-    	/*for (int i =0 ; i < mergeSortRecursive_test1.length; i++) {
-    		System.out.println(mergeSortRecursive_test1[i]);
-		}*/
     	
-    	double[] mergeSortIterative_test1 = SortComparison.mergeSortIterative(ReadFile.readFile1000Num(fileName3));
-    	/*for (int i =0 ; i < mergeSortIterative_test1.length; i++) {
-    		System.out.println(mergeSortIterative_test1[i]);
-		}*/
+    	temp100 = ReadFile.readFile100Num(fileName2);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.quickSort(temp100);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for quickSort numbers100 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName3);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.quickSort(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for quickSort numbers1000 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName4);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.quickSort(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for quickSort numbers1000Duplicates " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName5);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.quickSort(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for quickSort numbersNearlyOrdered1000 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName6);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.quickSort(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for quickSort numbersReverse1000 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName7);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.quickSort(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for quickSort numbersSorted1000 " + (endTime - startTime) + "ms");
+    	
+		System.out.println("");
+
+		temp10 = ReadFile.readFile10Num(fileName1); 
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortRecursive(temp10);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortRecursive numbers10 " + (endTime - startTime) + "ms");
+    	
+    	
+    	temp100 = ReadFile.readFile100Num(fileName2);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortRecursive(temp100);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortRecursive numbers100 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName3);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortRecursive(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortRecursive numbers1000 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName4);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortRecursive(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortRecursive numbers1000Duplicates " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName5);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortRecursive(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortRecursive numbersNearlyOrdered1000 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName6);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortRecursive(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortRecursive numbersReverse1000 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName7);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortRecursive(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortRecursive numbersSorted1000 " + (endTime - startTime) + "ms");
+    	
+		System.out.println("");
+
+		temp10 = ReadFile.readFile10Num(fileName1); 
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortIterative(temp10);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortIterative numbers10 " + (endTime - startTime) + "ms");
+    	
+    	
+    	temp100 = ReadFile.readFile100Num(fileName2);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortIterative(temp100);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortIterative numbers100 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName3);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortIterative(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortIterative numbers1000 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName4);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortIterative(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortIterative numbers1000Duplicates " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName5);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortIterative(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortIterative numbersNearlyOrdered1000 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName6);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortIterative(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortIterative numbersReverse1000 " + (endTime - startTime) + "ms");
+    	
+    	temp1000 = ReadFile.readFile1000Num(fileName7);
+    	startTime = System.currentTimeMillis();
+    	SortComparison.mergeSortIterative(temp1000);
+    	endTime = System.currentTimeMillis(); 
+    	System.out.println("Runtime for mergeSortIterative numbersSorted1000 " + (endTime - startTime) + "ms");
+    	
+		System.out.println("");
+	
     }
 
 }
