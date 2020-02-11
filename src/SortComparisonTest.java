@@ -8,6 +8,15 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 //-------------------------------------------------------------------------
+
+
+
+// If you want to print the performance experiment time for each sort,
+// then uncomment the testSort method and the main method, then run this test file
+
+
+
+
 /**
  *  Test class for SortComparison.java
 
@@ -29,13 +38,50 @@ import org.junit.runners.JUnit4;
 
 /*
 a. Which of the sorting algorithms does the order of input have an impact on? Why?
+Insertion sort, the best case for insertion sort is the ordered array while the worst is the reverse ordered array
+since in each run, insertion sort would compare the current element with all the previous elements and swap if it's smaller,
+in the reverse ordered array, this swap would happen every time so it would take longer time.
+*/
+
+/*
 b. Which algorithm has the biggest difference between the best and worst performance, based
 on the type of input, for the input of size 1000? Why?
-c. Which algorithm has the best/worst scalability, i.e., the difference in performance time
+In theory, the selection sort is not sensitive to the input order, but according to the performance result,
+the selection sort performance worst for different files with both 1000 numbers.
+
+For my implemention, while the pivot for quick sort is always the first one, then its performance might also 
+differ quite large between best and worst cases
+
+Also, for insertion sort, the best case is the sorted array, the worst case is the reverse ordered array, and the 
+time complexity is O(N) and O(N^2), which should also be obvious but it didn't show in the experiment.
+
+
+*/
+
+/*
+/*c. Which algorithm has the best/worst scalability, i.e., the difference in performance time
 based on the input size? Please consider only input files with random order for this answer.
+
+According to the performance experiment result,  MergeSortIterative seems have the best scalability. 
+*/
+
+/*
 d. Did you observe any difference between iterative and recursive implementations of merge
 sort?
+The iterative version would sort the array by size 1,2,4,8 from the start while the recursive version 
+just continue to divide the array into two parts. I wrote two different merge methods to fit different version.
+The iterative version is more concise and direct than the recursive version.
+
+
+*/
+
+/*
 e. Which algorithm is the fastest for each of the 7 input files?
+
+For the 10random, 100random, 1000random, the quick sort would be the best.
+For the 1000Duplicates, quick sort and mergerSortRecursive has almost the same performance.
+For the 1000Rerverse, the mergeSortIterative seems to be the best.
+For the 1000Ordered, the mergeSortRecursive has the best performance.
 */
 @RunWith(JUnit4.class)
 public class SortComparisonTest
@@ -135,7 +181,7 @@ public class SortComparisonTest
 
     // TODO: add more tests here. Each line of code and ech decision in Collinear.java should
     // be executed at least once from at least one test.
-    public static float testSort(String filename, String sortName, int len) throws Exception {
+    /*public static float testSort(String filename, String sortName, int len) throws Exception {
     	double[] temp = new double[len];
     	if(len == 10) {
     		temp = ReadFile.readFile10Num(filename);
@@ -143,11 +189,11 @@ public class SortComparisonTest
     		temp = ReadFile.readFile100Num(filename);
     	}else if(len == 1000){
     		temp = ReadFile.readFile1000Num(filename);
-    	}/*else if(len == 10000){
+    	}else if(len == 10000){
     		temp = ReadFile.readFile10000Num(filename);
     	}else if(len == 100000){
     		temp = ReadFile.readFile100000Num(filename);
-    	}*/
+    	}
     	
     	long startTime = System.nanoTime();
     	long endTime = System.nanoTime();
@@ -180,7 +226,7 @@ public class SortComparisonTest
     	return (float)(endTime-startTime)/1000000;
     	
     	
-    }
+    }*/
 
     // ----------------------------------------------------------
     /**
@@ -189,7 +235,7 @@ public class SortComparisonTest
      * @throws Exception 
      *
      */
-    public static void main(String[] args) throws Exception
+    /*public static void main(String[] args) throws Exception
     {
         //TODO: implement this method
     	//SortComparison SortCom = new SortComparison();
@@ -203,12 +249,12 @@ public class SortComparisonTest
     	String fileName7 = "numbersSorted1000.txt";
     	
     	
-    	/*String fileName8 = "numbers10000.txt";
+    	String fileName8 = "numbers10000.txt";
     	String fileName9 = "numbers10000Duplicates.txt";	
     	String fileName10 = "numbers100000.txt";
     	String fileName11 = "numbersReverse10000.txt";
     	String fileName12 = "numbersSorted10000.txt";
-    	String fileName13 = "resNearlyOrdered10000.txt";*/
+    	String fileName13 = "resNearlyOrdered10000.txt";
     	
     	String sortName1 = "insertion";
     	String sortName2 = "selection";
@@ -224,12 +270,12 @@ public class SortComparisonTest
     	System.out.println("Runtime for " + sortName1 + " " + fileName5 + " " + testSort(fileName5, sortName1, 1000) + "ms");
     	System.out.println("Runtime for " + sortName1 + " " + fileName6 + " " + testSort(fileName6, sortName1, 1000) + "ms");
     	System.out.println("Runtime for " + sortName1 + " " + fileName7 + " " + testSort(fileName7, sortName1, 1000) + "ms");
-    	/*System.out.println("Runtime for " + sortName1 + " " + fileName8 + " " + SortComparison.testSort(fileName8, sortName1, 10000) + "ms");
+    	System.out.println("Runtime for " + sortName1 + " " + fileName8 + " " + SortComparison.testSort(fileName8, sortName1, 10000) + "ms");
     	System.out.println("Runtime for " + sortName1 + " " + fileName9 + " " + SortComparison.testSort(fileName9, sortName1, 10000) + "ms");
     	System.out.println("Runtime for " + sortName1 + " " + fileName10 + " " + SortComparison.testSort(fileName10, sortName1, 100000) + "ms");
     	System.out.println("Runtime for " + sortName1 + " " + fileName11 + " " + SortComparison.testSort(fileName11, sortName1, 10000) + "ms");
     	System.out.println("Runtime for " + sortName1 + " " + fileName12 + " " + SortComparison.testSort(fileName12, sortName1, 10000) + "ms");
-    	System.out.println("Runtime for " + sortName1 + " " + fileName13 + " " + SortComparison.testSort(fileName13, sortName1, 10000) + "ms");*/
+    	System.out.println("Runtime for " + sortName1 + " " + fileName13 + " " + SortComparison.testSort(fileName13, sortName1, 10000) + "ms");
     	
     	System.out.println("");
     	
@@ -272,8 +318,9 @@ public class SortComparisonTest
 	
     }
 
-}
+}*/
 
+/*
 class ReadFile {
 	
 	public static double[] readFile10Num(String filename) throws Exception {
@@ -327,7 +374,7 @@ class ReadFile {
 	    return Nums;
 	}
 	
-	/*public static double[] readFile10000Num(String filename) throws Exception {
+	public static double[] readFile10000Num(String filename) throws Exception {
 		// Create a File instance
 	    java.io.File file = new java.io.File(filename);
 	    // Create a Scanner for the file

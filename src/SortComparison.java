@@ -245,7 +245,7 @@ import java.util.Scanner;
             }else{
                 temp[count++] = a[j++];
             }        
-        }
+         }
         
         // copy the rest part into the original array
         while(i<=mid){
@@ -264,11 +264,11 @@ import java.util.Scanner;
     	
     
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         //todo: do experiments as per assignment instructions
     	//return;
-    }
+    }*/
 
  }//end class
  
