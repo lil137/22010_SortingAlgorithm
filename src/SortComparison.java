@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 // -------------------------------------------------------------------------
-
+// gitub page: https://github.com/lil137/22010_SortingAlgorithm
 /**
  *  This class contains static methods that implementing sorting of an array of numbers
  *  using different sort algorithms.
